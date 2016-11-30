@@ -79,11 +79,12 @@ function enrichJson(queryResults) {
   //delete queryResults;
 
   // iterate over jsonFile
+  var zz = 0;
   for (var i = 0, j = parsedJsonFile.features.length-1; i < j; ++i) {
-    var bzrk = parsedJsonFile.features[i].properties.Bezirk    
+    var bzrk = parsedJsonFile.features[i].properties.Name
     // rewrite the whole properties section
     if (bzrk in bezirkMapping) { 
-      console.log('Added HANA data for: ', bzrk);
+      console.log('Added HANA data for: ', bzrk, ' - that was #', ++zz);
       parsedJsonFile.features[i].properties['fromhana'] = bezirkMapping[bzrk];
     }
   }
